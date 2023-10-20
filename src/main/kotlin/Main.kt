@@ -4,7 +4,7 @@ fun main(args: Array<String>) {
     val dictionary = initDictionary()
     while (true) {
         println("Please type a letter (case sensitive) or exit to quit:")
-        var letter = readLine()!!
+        val letter = readLine()!!
         if (letter == "exit") {
             break
         } else if (letter.length > 1) {
@@ -12,9 +12,9 @@ fun main(args: Array<String>) {
             continue
         } else
             println("Please type a number (position):")
-        var position = readLine()!!.toInt()
+        val position = readLine()!!.toInt()
 
-        var index = position - 1
+        val index = position - 1
         val filteredDictionary: List<String> =
             if (position == 0) {
                 dictionary.filter { it.startsWith(letter, false) }
@@ -26,15 +26,19 @@ fun main(args: Array<String>) {
                         it[index].toString() == (letter)
                 }
             }
+
         println(
             "There are ${filteredDictionary.size} words starting with $letter " +
-                    "at position $position \n\n"
+                    "at position $position"
         )
+
         println("Do you want to see the words? (y/n)")
         val answer = readLine()!!
         if (answer == "y") {
+            println()
             filteredDictionary.forEach { println(it) }
         }
+        println("\n########\n")
     }
 }
 
